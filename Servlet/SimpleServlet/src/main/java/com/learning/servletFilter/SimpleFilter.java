@@ -19,12 +19,14 @@ public class SimpleFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
 		System.out.println("Remote Address = "+ request.getRemoteAddr());
+		
 		chain.doFilter(request, response);
 	}
 	
 	public void destroy(){
-		System.out.println(className + "has stopped");
+		System.out.println(className + " has stopped");
 	}
 
 }

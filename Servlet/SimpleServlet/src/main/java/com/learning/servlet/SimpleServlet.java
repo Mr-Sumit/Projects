@@ -3,6 +3,7 @@ package com.learning.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,15 @@ public class SimpleServlet extends HttpServlet {
 		      throws ServletException, IOException {
 		System.out.println("Servlet Do get Method");
 		response.setContentType("text/html");
+		Cookie[] cookies = request.getCookies();
+		
+		if(cookies != null){
+			System.out.println("In Simple Servlet Cookie Name = " + cookies[0].getName());
+		}
+			
+		Cookie cookie = new Cookie("cookieName","servletDemo");
+		response.addCookie(cookie);
+		
 		response.getWriter().println("<h1> First Servlet </h1>");
 	}
 	
