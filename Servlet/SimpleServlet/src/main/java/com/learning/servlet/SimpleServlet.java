@@ -22,15 +22,16 @@ public class SimpleServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		      throws ServletException, IOException {
 		System.out.println("Servlet Do get Method");
-		response.setContentType("text/html");
-		Cookie[] cookies = request.getCookies();
 		
+		response.setContentType("text/html");
+		
+		Cookie[] cookies = request.getCookies();
 		if(cookies != null){
 			System.out.println("In Simple Servlet Cookie Name = " + cookies[0].getName());
+		}else{
+			Cookie cookie = new Cookie("cookieName","servletDemo");
+			response.addCookie(cookie);
 		}
-			
-		Cookie cookie = new Cookie("cookieName","servletDemo");
-		response.addCookie(cookie);
 		
 		response.getWriter().println("<h1> First Servlet </h1>");
 	}
